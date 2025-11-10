@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #0c3e60;
+  background-image: url("/src/assets/Untitled.png"); /* 🌙 dark mode default */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  transition: background-image 0.5s ease-in-out; /* smooth transition */
+}
+
+/* ☀️ Light mode version */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #dbe9ff;
+    background-image: url("/src/assets/9318101.png");
+  }
+}
+
+@layer base {
+  body {
+    @apply text-2xl;
+  }
+}
