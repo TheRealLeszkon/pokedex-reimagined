@@ -1,5 +1,6 @@
 import Type from "./Type";
 import { capFirst } from "../utility";
+
 function Profile({
   name = "MissingNo",
   number = -1,

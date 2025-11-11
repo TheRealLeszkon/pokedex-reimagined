@@ -1,11 +1,12 @@
 import { useParams, Link } from "react-router-dom";
 import Profile from "../components/Profile";
 import { useEffect, useState } from "react";
-
+import { getWeaknesses } from "../utility";
 function Pokemon() {
   const { name } = useParams();
   const [pokeInfo, setpokeInfo] = useState({});
   const [desc, setDesc] = useState("No Description");
+  const [weakness, setWeakness] = useState([]);
 
   const load = async () => {
     try {
@@ -21,8 +22,11 @@ function Pokemon() {
       let desc = await descRes.json();
       console.log(desc.flavor_text_entries[0].flavor_text);
       desc = desc.flavor_text_entries[0].flavor_text;
+
       setDesc(desc);
       setpokeInfo(json);
+      const weakness = await getWeaknesses(json.name);
+      setWeakness(weakness);
     } catch (error) {
       console.error("Error fetching Pokemon data:", error);
     }
@@ -55,6 +59,7 @@ function Pokemon() {
         weight={pokeInfo.weight}
         height={pokeInfo.height}
         desc={desc}
+        weakness={weakness}
       ></Profile>
     </div>
   );
