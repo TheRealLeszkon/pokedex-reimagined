@@ -45,7 +45,7 @@ function Profile({
       >
         {/* Name + Number */}
         <div className="flex flex-wrap justify-between items-center gap-2">
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-gray-100 break-words">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-900 dark:text-gray-100 wrap-break-words">
             {capFirst(name)}
           </h1>
           <h3 className="text-base sm:text-lg md:text-2xl text-gray-600 dark:text-gray-300 whitespace-nowrap">
