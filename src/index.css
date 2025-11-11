@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: #0c3e60;
+  background-color: #363662;
   background-image: url("/src/assets/Untitled.png"); /* 🌙 dark mode default */
   background-size: cover;
   background-position: center;
@@ -17,7 +17,7 @@ body {
 /* ☀️ Light mode version */
 @media (prefers-color-scheme: light) {
   body {
-    background-color: #dbe9ff;
+    background-color: #0E3F5F;
     background-image: url("/src/assets/9318101.png");
   }
 }
@@ -25,5 +25,5 @@ body {
 @layer base {
   body {
     @apply text-2xl;
-  }
+  } 
 }
