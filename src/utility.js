@@ -34,3 +34,10 @@ export async function getWeaknesses(pokemonName) {
 
   return Array.from(weaknesses);
 }
+export async function getDescription(name) {
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`);
+  const data = await res.json();
+  const allDescriptions = data.flavor_text_entries;
+  return allDescriptions.find((desc) => desc.language.name === "en")
+    .flavor_text;
+}

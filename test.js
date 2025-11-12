@@ -75,6 +75,7 @@ export async function getWeaknesses(pokemonName) {
     `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
   );
   const pokeData = await pokeRes.json();
+  console.log(pokeData);
 
   // Step 2: Fetch type details
   const typeUrls = pokeData.types.map((t) => t.type.url);
@@ -106,3 +107,34 @@ export async function getWeaknesses(pokemonName) {
 
 // Usage
 getWeaknesses("garchomp").then(console.log);
+
+async function getDescription(name) {
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`);
+  const data = await res.json();
+  const allDescriptions = data.flavor_text_entries;
+  return allDescriptions.find((desc) => desc.language.name === "en")
+    .flavor_text;
+}
+
+getDescription("raticate").then(console.log);
+
+// export async function pokeFilter(pokemon) {
+//   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/`);
+//   const json = await res.json();
+
+//   const pokeUrls = json.results;
+//   const pokeData = await Promise.all(
+//     pokeUrls.map(async (poke) => {
+//       const response = await fetch(poke.url);
+//       const pokeJson = await response.json();
+//       return pokeJson;
+//     })
+//   );
+//   console.log("Fetched Data:");
+//   console.log(
+//     pokeData.filter(
+//       (poke) => poke.types[].type.name === "fire"
+//     ).length
+//   );
+// }
+// pokeFilter("bulbasaur");

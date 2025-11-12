@@ -4,6 +4,7 @@ import SlotCard from "../components/SlotCard";
 import Search from "../components/Search";
 import Switch from "../components/Switch";
 import Toast from "../components/Toast";
+import pokeBanner from "../assets/poke-logo.png";
 function App() {
   const API_BASE = "https://pokeapi.co/api/v2/";
   const limit = 1025;
@@ -29,6 +30,7 @@ function App() {
   useEffect(() => {
     loadData();
   }, [shinyFilter]);
+  // setData(data.filter(poke => poke.types.))
   return (
     <div className="overflow-x-hidden ">
       <Switch
@@ -38,11 +40,7 @@ function App() {
       <Toast shinyFilter={shinyFilter} text={"Enabled Shiny Mode!"}></Toast>
       <div className="w-full h-100  flex flex-col justify-center items-center p-10 ">
         <div className="w-90 h-auto p-0">
-          <img
-            src="src/assets/poke-logo.png"
-            alt=""
-            className="w-full h-full"
-          />
+          <img src={pokeBanner} alt="" className="w-full h-full" />
         </div>
         <Search></Search>
       </div>
@@ -57,6 +55,7 @@ function App() {
         {data.map((pokemon) => {
           return (
             <SlotCard
+              key={pokemon.id}
               sprite={
                 shinyFilter
                   ? pokemon.sprites.front_shiny

@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import Profile from "../components/Profile";
 import { useEffect, useState } from "react";
-import { getWeaknesses } from "../utility";
+import { getWeaknesses, getDescription } from "../utility";
 function Pokemon() {
   const { name } = useParams();
   const [pokeInfo, setpokeInfo] = useState({});
@@ -19,9 +19,7 @@ function Pokemon() {
         throw new Error("Network response was not ok");
       }
       const json = await data.json();
-      let desc = await descRes.json();
-      console.log(desc.flavor_text_entries[0].flavor_text);
-      desc = desc.flavor_text_entries[0].flavor_text;
+      let desc = await getDescription(json.name);
 
       setDesc(desc);
       setpokeInfo(json);
@@ -38,7 +36,7 @@ function Pokemon() {
 
   if (!pokeInfo.id) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen dark:bg-gray-800 dark:text-amber-50">
         <p>Loading...</p>
       </div>
     );
