@@ -1,6 +1,6 @@
 import Type from "./Type";
 import { capFirst } from "../utility";
-
+import missingno from "../assets/MissingNo.png";
 function Profile({
   name = "MissingNo",
   number = -1,
@@ -11,7 +11,7 @@ function Profile({
   desc = "No description!",
   weakness = ["unknown", "unknown", "unknown", "unknown", "unknown"],
 
-  img = "src/assets/MissingNo.png",
+  img = missingno,
 }) {
   return (
     <div
@@ -26,12 +26,12 @@ function Profile({
         className="flex items-center justify-center border 
                    border-gray-200 dark:border-gray-700 
                    bg-gray-50 dark:bg-gray-900 
-                   rounded-2xl p-3 md:p-0"
+                   rounded-2xl p-3 md:p-6 **aspect-square** md:row-span-2"
       >
         <img
           src={img}
           alt="Who's that pokemon?"
-          className="w-48 h-48 sm:w-56 sm:h-56 md:w-full md:h-full object-contain 
+          className="w-48 h-48 sm:w-56 sm:h-56 **max-w-full max-h-full** object-contain 
                      drop-shadow-md dark:drop-shadow-none transition-all duration-300"
         />
       </div>
@@ -78,7 +78,7 @@ function Profile({
 
       {/* Description + Weaknesses */}
       <div
-        className="col-span-1 md:col-span-3 border 
+        className="col-span-1 md:col-span-2 border 
                    border-gray-200 dark:border-gray-700 
                    rounded-2xl p-5 sm:p-6 bg-gray-50 dark:bg-gray-900 
                    transition-all duration-300"

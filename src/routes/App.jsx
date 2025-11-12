@@ -10,6 +10,7 @@ function App() {
   const limit = 1025;
   const [data, setData] = useState([]);
   const [shinyFilter, setShinyFilter] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const loadData = async () => {
     const res = await fetch(`${API_BASE}pokemon/?offset=0&limit=${limit}`);
     const json = await res.json();
@@ -42,7 +43,7 @@ function App() {
         <div className="w-90 h-auto p-0">
           <img src={pokeBanner} alt="" className="w-full h-full" />
         </div>
-        <Search></Search>
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm}></Search>
       </div>
       <div
         className="grid 

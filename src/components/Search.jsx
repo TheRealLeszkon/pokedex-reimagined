@@ -1,5 +1,14 @@
 import searchIcon from "../assets/search-interface-symbol.png";
-function Search() {
+import { Link, useNavigate } from "react-router-dom";
+
+function Search({ searchTerm = "Empty Search Box", setSearchTerm }) {
+  const navigate = useNavigate();
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && searchTerm.trim() !== "") {
+      e.preventDefault();
+      navigate(`/pokemon/${searchTerm}`);
+    }
+  };
   return (
     <div className="relative w-full max-w-md mx-auto mt-6">
       <div
@@ -13,15 +22,25 @@ function Search() {
         <input
           type="text"
           placeholder="Search Pokémon..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleKeyDown}
           className="flex-1 text-lg text-gray-700 dark:text-gray-200 
           bg-transparent outline-none placeholder-gray-400 dark:placeholder-gray-500 "
         />
-
-        <img
-          src={searchIcon}
-          alt="Search"
-          className="w-6 h-6 opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer dark:invert brightness-0"
-        />
+        <Link
+          to={
+            searchTerm == ""
+              ? "/pokemon/Empty Search Box"
+              : `/pokemon/${searchTerm}`
+          }
+        >
+          <img
+            src={searchIcon}
+            alt="Search"
+            className="w-6 h-6 opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer dark:invert brightness-0"
+          />
+        </Link>
       </div>
     </div>
   );
