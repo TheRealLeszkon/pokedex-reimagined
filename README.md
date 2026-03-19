@@ -1,16 +1,15 @@
-# React + Vite
+# Pokédex Reimagined
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React-based web application that allows users to explore and view detailed Pokémon data through an interactive interface. The application fetches real-time data from the PokeAPI and presents it using dynamic UI rendering and client-side routing.
 
-Currently, two official plugins are available:
+**Live Demo:**  
+https://03ec0551.pokedex-reimagined.pages.dev/pokemon/charmeleon  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Fetches and displays real-time Pokémon data from PokeAPI  
+- Dynamic UI rendering based on selected Pokémon  
+- Client-side routing for navigation using React Router DOM 
+- Conditional rendering for efficient component updates  
+- Responsive design for both desktop and mobile devices  
+- Deployed using Cloudflare Pages  
